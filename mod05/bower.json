@@ -1,0 +1,21 @@
+{
+  "name": "mod05",
+  "homepage": "https://github.com/mauricedb/mwd-2017-02-20",
+  "authors": [
+    "Maurice de Beijer <maurice.de.beijer@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
