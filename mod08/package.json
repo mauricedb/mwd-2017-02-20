@@ -1,0 +1,18 @@
+{
+  "name": "mod08",
+  "version": "1.0.0",
+  "description": "",
+  "main": "install.js",
+  "dependencies": {},
+  "devDependencies": {
+    "nightwatch": "^0.9.12",
+    "selenium-download": "^2.0.9"
+  },
+  "scripts": {
+    "install": "node install.js",
+    "test": "nightwatch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
