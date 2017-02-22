@@ -1,21 +1,45 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+function updateValue(value){
+  return {
+    type:  'update-value',
+    payload: value
+  }
+}
+
+var listeners = [];
+
+var store = {
+  value: 12
+}
+
+function dispatcher(action){
+  switch (action.type) {
+    case 'update-value':
+      store.value = action.payload;
+
+  }
+
+  listeners.forEach(l => l.forceUpdate());
+  console.log(store)
+}
+
 
 class UpdateValue extends React.Component {
   constructor() {
     super();
-
-    this._onChange = this._onChange.bind(this);
+    listeners.push(this)
+    this.onChange = this.onChange.bind(this);
   }
 
-  _onChange(e) {
-
+  onChange(e) {
+    dispatcher(updateValue(e.target.value))
   }
   render() {
     return (
       <div>
-        <input value={''} onChange={e => this._onChange(e)} />
+        <input value={store.value} onChange={e => this.onChange(e)} />
       </div>
     );
   }
@@ -24,12 +48,13 @@ class UpdateValue extends React.Component {
 class DisplayValue extends React.Component {
   constructor() {
     super();
+    listeners.push(this)
 
   }
 
   render() {
     return (
-      <div>Message: {''}</div>
+      <div>Value: {store.value}</div>
     );
   }
 }

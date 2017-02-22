@@ -24,6 +24,32 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function updateValue(value) {
+  return {
+    type: 'update-value',
+    payload: value
+  };
+}
+
+var listeners = [];
+
+var store = {
+  value: 12
+};
+
+function dispatcher(action) {
+  switch (action.type) {
+    case 'update-value':
+      store.value = action.payload;
+
+  }
+
+  listeners.forEach(function (l) {
+    return l.forceUpdate();
+  });
+  console.log(store);
+}
+
 var UpdateValue = function (_React$Component) {
   _inherits(UpdateValue, _React$Component);
 
@@ -32,13 +58,16 @@ var UpdateValue = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (UpdateValue.__proto__ || Object.getPrototypeOf(UpdateValue)).call(this));
 
-    _this._onChange = _this._onChange.bind(_this);
+    listeners.push(_this);
+    _this.onChange = _this.onChange.bind(_this);
     return _this;
   }
 
   _createClass(UpdateValue, [{
-    key: "_onChange",
-    value: function _onChange(e) {}
+    key: "onChange",
+    value: function onChange(e) {
+      dispatcher(updateValue(e.target.value));
+    }
   }, {
     key: "render",
     value: function render() {
@@ -47,8 +76,8 @@ var UpdateValue = function (_React$Component) {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement("input", { value: '', onChange: function onChange(e) {
-            return _this2._onChange(e);
+        _react2.default.createElement("input", { value: store.value, onChange: function onChange(e) {
+            return _this2.onChange(e);
           } })
       );
     }
@@ -63,7 +92,11 @@ var DisplayValue = function (_React$Component2) {
   function DisplayValue() {
     _classCallCheck(this, DisplayValue);
 
-    return _possibleConstructorReturn(this, (DisplayValue.__proto__ || Object.getPrototypeOf(DisplayValue)).call(this));
+    var _this3 = _possibleConstructorReturn(this, (DisplayValue.__proto__ || Object.getPrototypeOf(DisplayValue)).call(this));
+
+    listeners.push(_this3);
+
+    return _this3;
   }
 
   _createClass(DisplayValue, [{
@@ -72,8 +105,8 @@ var DisplayValue = function (_React$Component2) {
       return _react2.default.createElement(
         "div",
         null,
-        "Message: ",
-        ''
+        "Value: ",
+        store.value
       );
     }
   }]);
