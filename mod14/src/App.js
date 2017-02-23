@@ -3,19 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import Page1 from './Page1';
 import Page2 from './Page2';
+import {Route, Link} from 'react-router-dom';
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      page: 0
-    }
-    this.gotoPage = this.gotoPage.bind(this);  
-  }
-
-  gotoPage(page){
-    this.setState({page});
-  }
 
   render() {
     return (
@@ -27,12 +17,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <a href="#" onClick={() => this.gotoPage(1)}>Page 1</a>
+        <Link to="/page1">Page 1</Link>
         &nbsp;
-        <a href="#" onClick={() => this.gotoPage(2)}>Page 2</a>
+        <Link to="/page2">Page 2</Link>
 
-        { this.state.page === 1 ? <Page1 />: null}
-        { this.state.page === 2 ? <Page2 />: null}
+        <Route path="/page1" component={Page1} />
+        <Route path="/page2" component={Page2} />
       </div>
     );
   }
