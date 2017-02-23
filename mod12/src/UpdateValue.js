@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class UpdateValue extends Component {
   constructor() {
@@ -8,16 +9,31 @@ class UpdateValue extends Component {
   }
 
   onChange(e) {
-
+    this.props.updateValue(e.target.value)
   }
 
   render() {
     return (
       <div>
-        <input value={123} onChange={e => this.onChange(e)} />
+        <input value={this.props.value} onChange={this.onChange} />
       </div>
     );
   }
 }
 
-export default UpdateValue;
+function mapStateToProps(state){
+  return {
+    value: state.value
+  }
+}
+
+function mapDispatchToProps(dispatch){
+
+  return {
+    updateValue: function(value){
+      dispatch({type: 'update-value', payload: value})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpdateValue);
