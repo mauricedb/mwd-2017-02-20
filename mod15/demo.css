@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+body {
+    height: 100vh;
+    background-color: cornflowerblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    background-color: transparent;
+}
+
+ .box {
+    background-color: green !important;
+}
+
+
+.container > .box.yellow {
+    background-color: yellow;
+    height: 50vh;
+}
+
+.thespan {
+     height: 50vh;
+      width: 50vw;
+      display: inline-block;
+
+      border-radius: 5px;
+      box-shadow: 5px 5px 25px black;
+      transition: all 0.3s ease-in-out;
+}
+
+.thespan:hover{
+
+    transform:  scale(1.1);
+    /*transform: rotate(360deg);*/
+}
+
+
+/*.box:hover {
+    font-size: 48px;
+}*/
+
+input[required] {
+    background-color: red;
+}
+
+
+input[type=number] {
+    background-color: green;
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 2rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .container > .box.yellow {
+        height: 25vh;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .container > .box.yellow {
+        height: 10vh;
+    }
+}
