@@ -5,13 +5,106 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title>Bootstrap</title>
-    
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <style>
+        .special {
+        /*color: red;*/
+background-color: yellow;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Bootstrap</h1>
     
 
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 col-xs-6 col-xs-offset-3" style="background-color: red;">
+                First
+            </div>
+            <div class="col-sm-6 col-xs-9 col-md-pull-1" style="background-color: green;">
+                Second
+            </div>
+
+        </div>
+
+        <div class="row">
+<table class="table table-bordered table-striped table-condensed">
+
+    <tr>
+        <td>
+            One
+        </td>
+        <td>
+            Two
+        </td>
+        <td>
+            Three
+        </td>
+    </tr>
+    <tr>
+        <td>
+            One
+        </td>
+        <td>
+            Two
+        </td>
+        <td>
+            Three
+        </td>
+    </tr>
+    <tr>
+        <td>
+            One
+        </td>
+        <td>
+            Two
+        </td>
+        <td>
+            Three
+        </td>
+    </tr>
+    <tr>
+        <td>
+            One
+        </td>
+        <td>
+            Two
+        </td>
+        <td>
+            Three
+        </td>
+    </tr>
+</table>
+
+        </div>
+
+
+
+        <a class="btn btn-primary btn-xs pull-right" id='btn'>Click me</a>
+    
+
+
+        <form action="">
+            <div class="form-group">
+                <label id='lbl'>The label</label>
+                <input type="text" class="form-control">
+            </div>
+
+        </form>
+    </div>
+
+<script>
+
+document.getElementById('btn').addEventListener('click', () =>{
+    // document.getElementById('lbl').style.color = 'red';
+    document.getElementById('lbl').classList.add('special')
+});
+
+</script>
 </body>
 
 </html>
