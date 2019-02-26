@@ -5,7 +5,7 @@
   "main": "install.js",
   "dependencies": {},
   "devDependencies": {
-    "nightwatch": "^0.9.12",
+    "nightwatch": "^1.0.19",
     "selenium-download": "^2.0.9"
   },
   "scripts": {
